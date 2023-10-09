@@ -18,12 +18,21 @@ export default class TerminalHelper {
         TerminalHelper.showText('magenta', '-'.repeat(text.length) + '\n')
     }
 
-    static showText (color: string, text: string) : void {
+    static showText (color: string = 'red', text: string) : void {
         TerminalFactory.GerarCor(color, text)
+    }
+
+    static danger (text: string) : void {
+        terminal.red(`${text}`)
     }
 
     static showKeyAndValue (key: string, value: string) {
         terminal.yellow(key).green(value).white("\n")
+    }
+
+    static async wait() : Promise<void> {
+        TerminalFactory.GerarCor('white', '\nPressione [ENTER] para continuar...')
+        await terminal.inputField({ echo: false }).promise
     }
 
     static async singleColumn(options: string[]): Promise<ResponseSelected> {

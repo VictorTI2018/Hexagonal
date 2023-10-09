@@ -11,14 +11,14 @@ export default abstract class CarroBase implements ICarro {
 
     run(): void {
         this._velocidadeAtual = Math.min(
-            this.velocidadeAtual + this.quantoAcelerar,
+            this._velocidadeAtual + this.quantoAcelerar,
             this.velocidadeMaxima
         )
     }
 
     break(): void {
         this._velocidadeAtual = Math.max(
-            this.velocidadeAtual - this.quantoFrear,
+            this._velocidadeAtual - this.quantoFrear,
             0
         )
     }
